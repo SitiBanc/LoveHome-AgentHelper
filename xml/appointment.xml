@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appointments xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="appointment.xsd">
+	
+	<appointment id="2">
+		<object id="5">
+			<name>櫻花家綻靚亮三房</name>
+			<address>
+				<city>台中市</city>
+				<district>烏日區</district>
+				<road>三榮路二段</road>
+			</address>
+		</object>
+		<date>2016-06-26</date>
+		<time>10:30:00</time>
+	</appointment>
+	<appointment id="3">
+		<object id="3">
+			<name>松江康泰精品美居</name>
+			<address>
+				<city>台北市</city>
+				<district>中山區</district>
+				<road>松江路</road>
+			</address>
+		</object>
+		<date>2016-07-02</date>
+		<time>10:00:00</time>
+	</appointment>
+	<appointment id="4">
+		<object id="9">
+			<name>天母國小美廈</name>
+			<address>
+				<city>台北市</city>
+				<district>士林區</district>
+				<road>天母西路</road>
+			</address>
+		</object>
+		<date>2016-07-02</date>
+		<time>15:00:00</time>
+	</appointment>
+	
+	<appointment id="6">
+		<object id="9">
+			<name>天母國小美廈</name>
+			<address>
+				<city>台北市</city>
+				<district>士林區</district>
+				<road>天母西路</road>
+			</address>
+		</object>
+		<date>2016-07-02</date>
+		<time>15:00:00</time>
+	</appointment>
+	
+	
+</appointments>

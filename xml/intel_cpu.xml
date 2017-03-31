@@ -1,0 +1,12 @@
+<products>
+	<brand name="Intel">"
+		<product>i3</product>
+		<product>i5</product>
+		<product>i7</product>
+		<product>Xeno</product>
+	</brand>
+	<brand name="AMD">
+		<product>Unkonwn1</product>
+		<product>Unkonwn2</product>
+	</brand>
+</products>

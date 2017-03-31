@@ -1,0 +1,150 @@
+.title{
+	background-image:url(images/icons-png/logo1.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+	width:100%;
+	height:60px;
+}.search{
+	float:right;
+	width:50px;
+	height:50px;
+	margin-top:4px;
+}
+@font-face{
+	font-family:"Noto Sans CJK TC";
+	src:url(NotoSansCJKtc-DemiLight.otf);
+}
+h1{
+	font-family:"Noto Sans CJK TC";
+	text-decoration:none;
+}
+h2{
+	font-family:"Noto Sans CJK TC";
+	color:#127765;
+	text-decoration:none;
+}
+.object_title{
+	font-family:"Noto Sans CJK TC";
+	color:#000000;
+	text-decoration:none;
+}
+h4{
+	font-family:"Noto Sans CJK TC";
+	color:#127765;
+}
+h3,h5,p,li{
+	font-family:"Noto Sans CJK TC";
+}
+.order_time{
+	font-family:"Noto Sans CJK TC";
+	color:red;
+}
+.navbar-icon{
+	width:70px;
+	height:70px;
+}
+.ui-btn{
+	font-family:"Noto Sans CJK TC";
+}
+.back{
+	width:70px;
+	height:50px;
+	padding-right:10px;
+	vertical-align:middle;
+}
+.ui-collapsible .ui-collapsible-heading-toggle{
+	font-family:"Noto Sans CJK TC";
+	text-align:center;
+	font-weight: bold;
+}
+.small_icon{
+	width:35px;
+	height:35px;
+	float:right;
+	vertical-align:middle;
+	top:0px;
+	left:0px;
+}
+.object-img_small{
+	max-width:100%;
+	height:125px;
+	float:left;
+}
+.object-img_large{
+	max-width:100%;
+	height:auto;
+	float:center;
+}
+.saler-pic{
+	width:90px;
+	height:120px;
+	float:left;
+}
+table,td{
+	font-family:"Noto Sans CJK TC";
+	text-align:center;
+	border:1px solid white;
+	border-collapse:collapse;
+}
+.ui-table-columntoggle-btn{
+	display:none;
+}
+.tbtitle{
+	background-color:grey;
+	color:white;
+	text-align:center;
+	width:125px;
+}
+th{
+	width:auto;
+	background:#127765;
+	color:white;
+	text-align:center;
+}
+label{
+	font-family:"Noto Sans CJK TC";
+}
+.submit_rating{
+	background-image:url('images/icons-png/submit_rating.png');
+}
+
+//rating
+.rating{
+	overflow: hidden;
+	vertical-align: bottom;
+	display: inline-block;
+	width: auto;
+	height: 30px;
+	float: leftt;
+}
+.rating > input{
+	opacity: 0;
+	margin-right: -100%;
+}
+.rating > label{
+	position: relative;
+	display: block;
+	float: right;
+	margin-top:15px;
+	margin-right:5px;
+	background: url('images/icons-png/star-off.png');
+	background-size: 30px 30px;
+	background-repeat:no-repeat;
+	text-align:center;
+}
+.rating > label:before{
+	display: block;
+	opacity: 0;
+	content: '';
+	width: 30px;
+	height: 30px;
+	background: url('images/icons-png/star-on.png');
+	background-size: 30px 30px;
+	background-repeat:no-repeat;
+	text-align:center;
+	transition: opacity 0.2s linear;
+}
+.rating >label:hover:before,.rating > label:hover ~ label:before,.rating:not(:hover) > :checked ~ label:before {
+	text-align:center;
+	opacity: 1;
+}

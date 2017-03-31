@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta http-equiv "Content-Type" content="text/html;charset=utf8">
+		<script	src="http://maps.googleapis.com/maps/api/js">
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+         <link rel="stylesheet" href="jquery-mobile-theme-232118-0/themes/app.min.css" />
+<link rel="stylesheet" href="jquery-mobile-theme-232118-0/themes/jquery.mobile.icons.min.css" />
+        </head>
+		<style type="text/css">
+	
+		#header1 {
+	background-image: url(20160321/20160321/image/logo1.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: auto;
+  height : 60px;
+ 
+}
+        </style>
+	<body>
+	
+		<div data-role="page" id="one">
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	
+		<div data-role="header" themes="b" style="background-color:#127765" id="header1">
+		<img src= "20160321/20160321/image/search2.png" onclick="self.location.href='search2.html'" style="float:right;width:50px;height:50px;margin-top:4px;" >
+		</div>
+        <div style="margin-top:-10px;height:55px;">
+       
+        <img src= "20160321/20160321/image/back.png" onclick="self.location.href='map.php'" style="float:left;width:70px;height:50px;margin-top:17px;margin-left:8px;" >
+		<img src= "20160321/20160321/image/searchH.png"  style="float:left;width:100px;height:50px;margin-top:17px;margin-left:17px;" >
+		<div style="clear:both;"></div>
+        </div>
+		
+			<div style="margin-top:17px;width:100%">
+				<form method="post" action="search.php">
+				
+       <table class=MsoTable15Grid5DarkAccent6 border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=208 colspan=2 valign=top style='width:375pt;border:solid white 1.0pt;
+  border-bottom:solid #A5A5A5 1.0pt;background:#117664;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span style='font-size:15.0pt;font-family:"微軟正黑體 Light","sans-serif";
+  color:white'>&nbsp;請輸入搜尋條件</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=66 valign=top style='width:49.4pt;border-top:none;border-left:solid white 1.0pt;
+  border-bottom:solid #A5A5A5 1.0pt;border-right:solid #A5A5A5 1.0pt;
+  background:#707070;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='font-size:15.0pt;font-family:"微軟正黑體 Light","sans-serif";color:white'>縣<span
+  lang=EN-US>&nbsp;&nbsp;&nbsp; </span>市</span></b></p>
+  
+  </td>
+  <td width=142 valign=top style='width:106.3pt;border-top:none;border-left:
+  none;border-bottom:solid #A5A5A5 1.0pt;border-right:solid white 1.0pt;
+  background:white;padding:0cm 5.4pt 0cm 5.4pt'>
+				
+					<select  onChange="location = this.options[this.selectedIndex].value;" name='address_1'>
+						<option value='#'>請選擇</option>
+						<option value='#'>台北市</option>
+						<option name='address_1' value='台中市' selected>台中市</option>
+					</select>
+				
+				</td>
+ </tr>
+ <tr>
+  <td width=66 valign=top style='width:49.4pt;border-top:none;border-left:solid white 1.0pt;
+  border-bottom:solid #A5A5A5 1.0pt;border-right:solid #A5A5A5 1.0pt;
+  background:#707070;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='font-size:15.0pt;font-family:"微軟正黑體 Light","sans-serif";color:white'>行 政
+  區</span></b></p>
+  </td>
+  <td width=142 valign=top style='width:106.3pt;border-top:none;border-left:
+  none;border-bottom:solid #A5A5A5 1.0pt;border-right:solid white 1.0pt;
+  background:white;padding:0cm 5.4pt 0cm 5.4pt'>
+					<select name='address_2'>
+					<option value='*'>請選擇</option>
+					<option name='address_2' value='中區'>中區</option>
+					<option name='address_2' value='東區'>東區</option>
+					<option name='address_2' value='西區'>西區</option>
+					<option name='address_2' value='南區'>南區</option>
+					<option name='address_2' value='北區'>北區</option>
+					<option name='address_2' value='西屯區'>西屯區</option>
+					<option name='address_2' value='南屯區'>南屯區</option>
+					<option name='address_2' value='北屯區'>北屯區</option>
+					<option name='address_2' value='豐原區'>豐原區</option>
+					<option name='address_2' value='大里區'>大里區</option>
+					<option name='address_2' value='太平區'>太平區</option>
+					<option name='address_2' value='清水區'>清水區</option>
+					<option name='address_2' value='沙鹿區'>沙鹿區</option>
+					<option name='address_2' value='大甲區'>大甲區</option>
+					<option name='address_2' value='東勢區'>東勢區</option>
+					<option name='address_2' value='梧棲區'>梧棲區</option>
+					<option name='address_2' value='烏日區'>烏日區</option>
+					<option name='address_2' value='神岡區'>神岡區</option>
+					<option name='address_2' value='大肚區'>大肚區</option>
+					<option name='address_2' value='大雅區'>大雅區</option>
+					<option name='address_2' value='霧峰區'>霧峰區</option>
+					<option name='address_2' value='后里區'>后里區</option>
+					<option name='address_2' value='潭子區'>潭子區</option>
+					<option name='address_2' value='龍井區'>龍井區</option>
+					<option name='address_2' value='外埔區'>外埔區</option>
+					<option name='address_2' value='石岡區'>石岡區</option>
+					<option name='address_2' value='和平區'>和平區</option>
+					<option name='address_2' value='大安區'>大安區</option>
+					<option name='address_2' value='新社區'>新社區</option>
+					</select>
+			</td>
+ </tr>
+ <tr>
+  <td width=66 valign=top style='width:49.4pt;border-top:none;border-left:solid white 1.0pt;
+  border-bottom:solid #A5A5A5 1.0pt;border-right:solid #A5A5A5 1.0pt;
+  background:#707070;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='font-size:15.0pt;font-family:"微軟正黑體 Light","sans-serif";color:white'>道路名稱</span></b></p>
+  </td>
+  <td width=142 valign=top style='width:106.3pt;border-top:none;border-left:
+  none;border-bottom:solid #A5A5A5 1.0pt;border-right:solid white 1.0pt;
+  background:white;padding:0cm 5.4pt 0cm 5.4pt'>
+  <input type="text" name="address_4" value placeholder="不限">
+  </td>
+ </tr>
+  <tr>
+  <td width=66 valign=top style='width:49.4pt;border-top:none;border-left:solid white 1.0pt;
+  border-bottom:solid #A5A5A5 1.0pt;border-right:solid #A5A5A5 1.0pt;
+  background:#707070;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  style='font-size:15.0pt;font-family:"微軟正黑體 Light","sans-serif";color:white'>關 鍵
+  字</span></b></p>
+  </td>
+  <td width=142 valign=top style='width:106.3pt;border-top:none;border-left:
+  none;border-bottom:solid #A5A5A5 1.0pt;border-right:solid white 1.0pt;
+  background:white;padding:0cm 5.4pt 0cm 5.4pt'>
+  <input type="text" name="keyword" value placeholder="請輸入關鍵字"></p>
+  </td>
+ </tr>
+</table>
+</div>
+			
+			
+				
+				
+				
+	<div data-role="footer"  style="text-align:center;background-color:#c31b24" data-position="fixed">
+					<input type="image" src="20160321/20160321/image/startsearch2.png" alt="Submit" />
+				</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

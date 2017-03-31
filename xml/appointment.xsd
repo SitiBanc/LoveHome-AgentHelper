@@ -1,0 +1,30 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="appointments" type="appointments"></xs:element>
+	<xs:complexType name="appointments">
+		<xs:sequence>
+			<xs:element name="appointment" type="appointment" minOccurs="0" maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="appointment">
+		<xs:sequence>
+			<xs:element name="object" type="object"></xs:element>
+			<xs:element name="date" type="xs:date"></xs:element>
+			<xs:element name="time" type="xs:time"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:integer" use="required"></xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="object">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"></xs:element>
+			<xs:element name="address" type="address"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:integer" use="required"></xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="address">
+		<xs:sequence>
+			<xs:element name="city" type="xs:string"></xs:element>
+			<xs:element name="district" type="xs:string"></xs:element>
+			<xs:element name="road" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,156 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf8">
+		<title>線上預約看屋系統</title>
+		 <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="bootstrap/css/my.css"/>
+		<script type="text/javascript">
+			function displayDist(str) {
+				if(str == 'none') {
+					document.getElementById('district').className = "off";   //行政區label
+					document.myform.dist.className = "off";                  //行政區下拉式選單
+					document.getElementById('submit').className = "off";     //送出按鈕
+				} else {
+					// insert AJAX code here
+					var http_request = false;
+					if(window.XMLHttpRequest) { // Mozilla, Safari, ....
+						http_request = new XMLHttpRequest();
+					} else if(window.ActiveXObject) { // IE
+						try {
+							http_request = new ActiveXObject("Msxml2.XMLHTTP");
+						} catch (e) {
+							try {
+								http_request = new ActiveXObject("Microsoft.XMLHTTP");
+							} catch (e) {}
+						}
+					}
+
+					if (!http_request) {
+						alert('Giving up :( Cannot create an XMLHTTP instance');
+						return false;
+					}
+					http_request.onreadystatechange = function(){alertContents(http_request); };
+					if(str == 'TC') {
+						url = 'Taichung.xml';
+					} else {
+						url = 'Taipei.xml';
+					}
+					http_request.open('GET', url, true);
+					http_request.send(null);
+				}
+			}
+			// 定義事件處理函數為 alterContents()
+			function alertContents(http_request) {
+				if (http_request.readyState == 4) {
+					if (http_request.status == 200) { 
+						var xmldoc = http_request.responseXML;
+						var nodes = xmldoc.getElementsByTagName('dist');
+						var current = document.myform.dist;
+						var anode, tnode;
+						while(current.hasChildNodes()) {
+							anode = current.firstChild;
+							current.removeChild(anode);
+						}
+
+					for(var i=0; i<nodes.length; i++) {
+						anode = document.createElement("option");
+						anode.setAttribute("value", i);
+						if(i == 0) 
+							anode.setAttribute("selected", "1");
+						current.appendChild(anode);
+						tnode = document.createTextNode(nodes[i].firstChild.data);
+						anode.appendChild(tnode);
+					}
+
+					document.getElementById('district').className = "on";   //行政區label
+					document.myform.dist.className = "on";                  //行政區下拉式選單
+					document.getElementById('submit').className = "on";     //送出按鈕
+				  } else {
+					alert('There was a problem with the request.');
+				  }
+				}
+			}
+			//若按下"送出"按鈕執行displayObj()
+			//document.getElementById('submit').addEventListener("click",displayObj);
+			function displayObj(city,district){
+				// insert AJAX code here
+				var http_request = false;
+				if(window.XMLHttpRequest) { // Mozilla, Safari, ....
+					http_request = new XMLHttpRequest();
+				} else if(window.ActiveXObject) { // IE
+					try {
+						http_request = new ActiveXObject("Msxml2.XMLHTTP");
+					} catch (e) {
+						try {
+							http_request = new ActiveXObject("Microsoft.XMLHTTP");
+						} catch (e) {}
+					}
+				}
+
+				if (!http_request) {
+					alert('Giving up :( Cannot create an XMLHTTP instance');
+					return false;
+				}
+				
+				//檢查行政區是否為空，若為空則傳回該城市所有房屋資訊
+				http_request.onreadystatechange = function(){alertObject(http_request,city,district); };
+				url = 'object.xml';
+				http_request.open('GET', url, true);
+				http_request.send(null);
+			}
+			
+			function alertObject(http_request,city,district){
+				if (http_request.readyState == 4) {
+					if (http_request.status == 200) { 
+						var xmldoc = http_request.responseXML;
+						var nodes = xmldoc.getElementsByTagName('object');
+						var current = document.getElementById('result');
+						var anode,tnode,xnode;
+						while(current.hasChildNodes()) {
+							anode = current.firstChild;
+							current.removeChild(anode);
+						}
+
+						for(var i=0; i<nodes.length; i++) {
+							xnode = nodes[i].childNodes[1];   //object.address
+							//顯示城市及行政區相符的房屋
+							if(xnode.childNodes[0].text == city && xnode.childNodes[1].text == district){
+								tnode = '<a href="objects_information.php?name='+ nodes[i].childNodes[0].text +'" class="list-group-item"><h4 class="list-group-item-heading">'+ nodes[i].childNodes[0].text +'</h4><p class="list-group-item-text">'+ xnode.childNodes[0].text + xnode.childNodes[1].text + xnode.childNodes[2].text +'<br/>'+ nodes[i].childNodes[6].text +'萬</p></a>'
+								current.innerHTML += tnode;
+							}
+						}
+					}else {
+						alert('There was a problem with the request.');
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<h1 align="center">搜尋房屋</h1>
+		<ul class="nav nav-pills">
+			<li role="presentation"><a href="appointment.xml">預約紀錄</a></li>
+			<li role="presentation"><a href="add.php">新增預約</a></li>
+			<li role="presentation" class="active"><a href="search.html">搜尋房屋</a></li>
+			<li role="presentation"><a href="object.xml">瀏覽房屋</a></li>
+		</ul>
+		<br/>
+		<form name="myform">
+			城市：
+			<select name="city" id="city" onChange="displayDist(document.myform.city.options[selectedIndex].value);">
+				<option value="none" selected="1">--</option>
+				<option value="TC">台中市</option>
+				<option value="TPE">台北市</option>
+			</select><br/>
+			<div id="district" class="off">行政區：</div>
+			<select name="dist" id="dist" class="off">
+				<option value="none" selected="1">--</option>
+			</select>
+			<input id="submit" type="button" value="送出" class="off" onClick="displayObj(document.getElementById('city').options[document.getElementById('city').selectedIndex].text,district = document.getElementById('dist').options[document.getElementById('dist').selectedIndex].text)"/>
+		</form>
+		<div id="result" class="list-group"></div>
+	</body>
+</html>

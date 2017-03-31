@@ -1,0 +1,17 @@
+<products>
+	<brand name="微星">
+		<product>13吋</product>
+		<product>14吋</product>
+		<product>15吋</product>
+	</brand>
+	<brand name="華碩">
+		<product>13吋</product>
+		<product>14吋</product>
+		<product>15吋</product>
+	</brand>
+	<brand name="宏碁">
+		<product>13吋</product>
+		<product>14吋</product>
+		<product>15吋</product>
+	</brand>
+</products>

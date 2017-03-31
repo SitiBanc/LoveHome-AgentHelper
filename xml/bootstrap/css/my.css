@@ -1,0 +1,9 @@
+h4{
+	color:rgb(0,115,190);
+}
+.off{
+	display:none;
+}
+.on {
+	display:inline;
+}

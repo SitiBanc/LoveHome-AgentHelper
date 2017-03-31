@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf8">
+		<title>AJAX TEST (WSDL)</title>
+		<style type="text/css">
+		  .off { display: none }
+		  .on  { display: inline }
+		</style>
+	</head>
+
+	<body>
+		<h2 align=center>Test AJAX & Web Service</h2>
+		<hr>
+		<script type="text/javascript" language="javascript">
+			function addNumbers(){
+				var int0 = document.myform.int0.value;
+				var int1 = document.myform.int1.value;
+				
+				// insert AJAX code here
+				var http_request = false;
+				if(window.XMLHttpRequest) { // Mozilla, Safari, ....
+					http_request = new XMLHttpRequest();
+				} else if(window.ActiveXObject) { // IE
+					try {
+						http_request = new ActiveXObject("Msxml2.XMLHTTP");
+					} catch (e) {
+						try {
+							http_request = new ActiveXObject("Microsoft.XMLHTTP");
+						} catch (e) {}
+					}
+				}
+				
+				http_request.onreadystatechange = function() { 
+					alertContents(http_request,int0,int1); 
+				};
+				url = 'http://127.0.0.1:8080/axis/services/AdditionService?method=addNumbers&in0='+int0+'&in1='+int1+'';
+				http_request.open('GET', url, true);
+				http_request.send(null);
+			}
+			
+			// 定義事件處理函數為 alterContents()
+			function alertContents(http_request,int0,int1) {
+				if (http_request.readyState == 4) {
+					if (http_request.status == 200) { 
+						var xmldoc = http_request.responseXML;
+						var nodes = xmldoc.getElementsByTagName("ns1:addNumbersReturn");
+
+					for(var i=0; i<nodes.length; i++) {
+						tnode = document.createTextNode(nodes[i].data);
+						document.getElementById("text_area0").innerHTML = int0 +" + "+ int1 +" = " + nodes[i].firstChild.data;
+					}
+				  } else {
+					alert('There was a problem with the request.');
+				  }
+				}
+			}
+		</script>
+		<form name="myform">
+			<input type="number" name="int0" required/>
+			 +
+			<input type="number" name="int1" required/>
+			<input type="button" value="Calculate" onClick="addNumbers()"/>
+		</form>
+		<hr>
+		<h3>Result：</h3>
+		<div id="text_area0"></div>
+	</body>
+</html>
